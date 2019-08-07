@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import request, reqparse, abort, Api, Resource
 from gobang.data import Board,Move,MoveEncoder
 import json
+import http_util
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,7 +15,6 @@ parser.add_argument('playerData', type=dict)
 # @app.route('/gobang/nextMove/',methods=['POST'])
 # def fetch_next_move():
 
-
 class Answer(Resource):
     def post(self):
         args = parser.parse_args()
@@ -22,8 +22,7 @@ class Answer(Resource):
         board = Board(args['idCode'], args['boardSize'], args['playerData'])
         print(args['playerData'])
         move=Move(1,1)
-        return move.display(), 200
-
+        return http_util.buildSuccess(move.display()),200
 
 api.add_resource(Answer, "/gobang/answer")
 
