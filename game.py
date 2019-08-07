@@ -1,5 +1,5 @@
-from flask import Flask
-from flask_restful import request, reqparse, abort, Api, Resource
+from flask import Flask,request
+from flask_restful import reqparse, abort, Api, Resource
 from gobang.data import Board,Move,MoveEncoder
 import json
 import http_util
@@ -17,10 +17,9 @@ parser.add_argument('playerData', type=dict)
 
 class Answer(Resource):
     def post(self):
-        args = parser.parse_args()
         # args=request.json()
-        board = Board(args['idCode'], args['boardSize'], args['playerData'])
-        print(args['playerData'])
+        print(request.form.get("playerData"))
+        board = Board(request.form.get('idCode'), request.form.get('boardSize'), request.form.get('playerData'))
         move=Move(1,1)
         return http_util.buildSuccess(move.display()),200
 
