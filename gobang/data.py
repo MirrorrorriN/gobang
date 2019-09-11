@@ -1,12 +1,12 @@
 import json
-class Board:
-    def __init__(self, idCode, boardSize, playerData):
-        self.idCode = idCode
-        self.boardSize = boardSize
-        self.playerData = playerData
+# class Scene:
+#     def __init__(self, idCode, boardSize, playerData):
+#         self.idCode = idCode
+#         self.boardSize = boardSize
+#         self.playerData = playerData
 
-    def __str__(self):
-        return '[idCode] '+self.idCode+'[boardSize] '+self.boardSize+'[playerData] '+str(self.playerData)
+#     def __str__(self):
+#         return '[idCode] '+self.idCode+'[boardSize] '+self.boardSize+'[playerData] '+str(self.playerData)
 
 class Move:
     def __init__(self, x, y):
