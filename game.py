@@ -52,3 +52,5 @@ class Board(object):
     def display_mesh(self):
         for i in range(len(self.mesh)):
             print (self.mesh[i])
+
+
